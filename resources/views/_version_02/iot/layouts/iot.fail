@@ -1,0 +1,48 @@
+<div class="col-lg-6 col-md-12">
+                    <div class="card"  {{ $detail_div_height }}>
+                        <div class="header">
+                            <h2><strong>Detail</strong></h2>
+                           
+                        </div>
+                        <div class="body">
+                            <h6>Detail</h6>
+
+                            @foreach($detail_info as $key => $info)
+                                         @foreach($info as $index => $data)   
+                                            @foreach($data as $i_key => $i_value) 
+                                                @php
+                                                    $index = 1;
+                                                    $ds = array();
+                                                    if($key == 'main')
+                                                    {
+                                                         $ds = $model ;
+                                                    }else if($key == 'rxInfo' || $key == 'txInfo'){
+
+                                                    
+                                                        $ds = $model[$key] ;
+                                                        if($key == 'rxInfo')
+                                                        {
+                                                            $ds = $ds[0] ;
+                                                        }
+                                                    }else if($key == 'loRaModulationInfo'){
+                                                         $ds = $model['txInfo'][$key] ;
+                                                    }
+
+
+                                                    $i_data = isset($ds[$i_key]) ? $ds[$i_key] : '';
+
+                                                    //dd($i_data);   
+                                                @endphp
+                                                <p> <small>{{ $i_value }} : {{ $i_data }}</small></p>
+                                                
+                                            @endforeach  
+                                        @endforeach
+                         @endforeach
+
+                            <p class="m-b-0">Data</p>
+                             <small>Model : {{ $model['deviceName'] }}</small>
+                       
+
+                        </div>
+                    </div>
+                </div>

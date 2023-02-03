@@ -1,0 +1,215 @@
+@extends('billings.layouts.admin')
+@section('content')
+@include('billings.layouts.partials._alert')
+
+{!! Form::model($model, ['class'=>'form-horizontal']) !!}
+ <!-- /.row -->
+<!-- SELECT2 EXAMPLE -->
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">{{App\Language::trans('Searching')}}</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-md-6">
+                    <div class="form-group{{ $errors->has('customer_id') ? ' has-error' : '' }}">
+                        {!! Form::label('customer_id', App\Language::trans('Customer Code'), ['class'=>'control-label col-md-4']) !!}
+                        <div class="col-md-8">
+                            {!! Form::select('customer_id', App\Customer::combobox(), null, ['class'=>'form-control','autofocus','required','onchange'=>'init_customer_info(this)']) !!} {!!$errors->first('customer_id', '
+                            <label for="customer_id" class="help-block error">:message</label>')!!}
+                        </div>
+                    </div>
+                    <!-- .form-group -->
+
+                   
+                  <div class="form-group{{ $errors->has('customer_id') ? ' has-error' : '' }}">
+                        {!! Form::label('customer_id', App\Language::trans('Type'), ['class'=>'control-label col-md-4']) !!}
+                        <div class="col-md-8">
+                            {!! Form::select('customer_id', App\Customer::combobox(), null, ['class'=>'form-control','autofocus','required','onchange'=>'init_customer_info(this)']) !!} {!!$errors->first('customer_id', '
+                            <label for="customer_id" class="help-block error">:message</label>')!!}
+                        </div>
+                    </div>
+                    <!-- .form-group -->
+
+                    
+
+
+                   
+
+                </div>
+                <div class="col-md-6">
+
+                  <!-- Date and time range -->
+                    <div class="form-group ">
+                        {!! Form::label('customer_id', App\Language::trans('Doc. Date'), ['class'=>'control-label col-md-4']) !!}
+
+                        <div class="col-md-8">
+                            <button type="button" class="btn btn-block" id="daterange-btn">
+                                <span>
+				                      <i class="fa fa-calendar"></i> {{App\Language::trans('Doc. Date')}}
+				                    </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- .Date and time range -->
+
+                    	 <div class="form-group{{ $errors->has('customer_id') ? ' has-error' : '' }}">
+                        {!! Form::label('customer_id', App\Language::trans('Payment Method'), ['class'=>'control-label col-md-4']) !!}
+                        <div class="col-md-8">
+                            {!! Form::select('customer_id', App\Customer::combobox(), null, ['class'=>'form-control','autofocus','required','onchange'=>'init_customer_info(this)']) !!} {!!$errors->first('customer_id', '
+                            <label for="customer_id" class="help-block error">:message</label>')!!}
+                        </div>
+                    </div>
+                    <!-- .form-group -->
+
+                    	
+
+
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="search_btn" class="btn btn-success btn-round  pull-right" onclick="initMapByTrackingNumber('tracking_no');">
+                            <i class="fa fa-search"></i> {{App\Language::trans('Search')}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.box-body -->
+
+</div>
+<!-- /.box -->
+
+<!-- /.row -->
+<div class="row">
+    <!-- /.col -->
+    <div class="col-md-12">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{App\Language::trans('Advance Search')}}</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="col-md-5">
+                    {!! Form::select('customer_id', App\Customer::combobox(), null, ['class'=>'form-control','autofocus','required','onchange'=>'init_customer_info(this)']) !!} {!!$errors->first('customer_id', '
+                    <label for="customer_id" class="help-block error">:message</label>')!!}
+                </div>
+                <div class="col-md-5">
+                    {!! Form::select('customer_id', App\Customer::combobox(), null, ['class'=>'form-control','autofocus','required','onchange'=>'init_customer_info(this)']) !!} {!!$errors->first('customer_id', '
+                    <label for="customer_id" class="help-block error">:message</label>')!!}
+                </div>
+                <div class="col-md-2">
+                    {!! Form::select('customer_id', App\Customer::combobox(), null, ['class'=>'form-control','autofocus','required','onchange'=>'init_customer_info(this)']) !!} {!!$errors->first('customer_id', '
+                    <label for="customer_id" class="help-block error">:message</label>')!!}
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+{!! Form::close() !!}
+
+<!-- Default box -->
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">{{App\Language::trans('Listing Information')}}</h3>
+        <div class="box-tools pull-right">
+            <a href="{{action('ARInvoicesController@getNew')}}" class="btn btn-block btn-info">
+                <i class="fa fa-file"></i> {{App\Language::trans('New File')}}
+            </a>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        @foreach($cols as $col) @if($col == 'id')
+                        <th class="text-center">#</th>
+                        @else
+                        <th class="text-center">{{App\Language::trans(ucwords(str_replace('_', ' ', $col)))}}</th>
+                        @endif @endforeach
+                        <th class="text-center">{{App\Language::trans('Action')}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($model as $index => $row)
+                    <tr>
+                        <td class="text-center">{{$index+1}}</td>
+                        @foreach($row->toArray() as $key => $value) @if($key == 'status')
+                        <td class="text-center">{{$row->display_status_string($key)}}</td>
+                        @elseif($key != 'id')
+                        <td class="text-center">{{$value}}</td>
+                        @endif @endforeach
+                        <td class="text-center">
+                            <a onclick="return confirm(confirmMsg)" href="{{action('ARInvoicesController@getEdit', [$row->id])}}">{{App\Language::trans('Edit')}}</a> |
+                            <a href="{{action('ARInvoicesController@getView', [$row->id])}}">{{App\Language::trans('View')}}</a> |
+                            <a onclick="return confirm(confirmMsg)" href="{{action('ARInvoicesController@getDelete', [$row->id])}}">{{App\Language::trans('Del')}}</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer text-center">
+        {{$model->links()}}
+    </div>
+    <!-- /.box-footer-->
+</div>
+<!-- /.box -->
+
+@endsection
+@section('script')
+	var customerInfoUrl = "{{action('CustomersController@getInfo')}}";
+	function init_customer_info(me) {
+		$.get(customerInfoUrl, {customer_id:$(me).val()}, function(fdata){
+			for (var key in fdata.data) {
+				console.log("key " + key + " has value " + fdata.data[key]);
+			}
+		},"json");
+	}
+
+	 $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+@endsection

@@ -1,0 +1,1 @@
+  <link rel="stylesheet" href="{{asset('css/power_meter_backed.css')}}?ver={{App\Setting::version()}}">

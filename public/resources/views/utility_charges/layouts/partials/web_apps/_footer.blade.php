@@ -1,0 +1,67 @@
+<div id="footer" class="col-md-12">
+    <!-- Custom Tabs -->
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab_1" data-toggle="tab"><i class="material-icons">update</i><br>Meter</a></li>
+            <li><a href="#tab_2" data-toggle="tab"><i class="material-icons">event</i><br>Billing</a></li>
+            <li><a href="#tab_3" data-toggle="tab"><i class="material-icons">money</i><br>Top Up</a></li>
+            <li><a href="#tab_4" data-toggle="tab"><i class="material-icons">help</i><br>Help</a></li>
+
+        </ul>
+
+    </div>
+    <!-- nav-tabs-custom -->
+</div>
+
+<!-- jQuery 3 -->
+<script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- SlimScroll -->
+<script src="{{asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+<!-- FastClick -->
+<script src="{{asset('bower_components/fastclick/lib/fastclick.js')}}"></script>
+
+<!-- Morris.js charts -->
+<script src="{{asset('bower_components/raphael/raphael.min.js')}}"></script>
+<script src="{{asset('bower_components/morris.js/morris.min.js')}}"></script>
+
+<!-- scrollable -->
+<script src="{{asset('js/jquery-scrolltofixed.js')}}"></script>
+<!-- InputMask -->
+<script src="{{asset('plugins/input-mask/jquery.inputmask.js')}}"></script>
+<script src="{{asset('plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
+<script src="{{asset('plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
+<script src="{{asset('plugins/input-mask/jquery.inputmask.numeric.extensions.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('js/adminlte.min.js')}}"></script>
+<!-- FLOT CHARTS -->
+<script src="{{asset('bower_components/Flot/jquery.flot.js')}}"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="{{asset('bower_components/Flot/jquery.flot.resize.js')}}"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="{{asset('bower_components/Flot/jquery.flot.pie.js')}}"></script>
+<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+<script src="{{asset('bower_components/Flot/jquery.flot.categories.js')}}"></script>
+<script src="{{asset('bower_components/jquery-knob/js/jquery.knob.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('js/demo.js')}}?ver={{App\Setting::version()}}"></script>
+<script src="{{asset('js/main.js')}}?ver={{App\Setting::version()}}"></script>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+
+<script>
+    var statesComboboxUrl = "{{action('StatesController@getCombobox')}}";
+    var citiesComboboxUrl = "{{action('CitiesController@getCombobox')}}";
+    var utilityChargeListUrl = "{{action('UtilityChargesController@getList')}}";
+    var confirmMsg = "{{App\Language::trans('Are you sure?')}}";
+    var errorRemoveRow = "{{App\Language::trans('This table at least one row left.')}}";
+    var enableLabel = "{{App\Language::trans('Enabled')}}";
+    var disableLabel = "{{App\Language::trans('Disabled')}}";
+    @yield('script')
+</script>
+</body>
+
+</html>

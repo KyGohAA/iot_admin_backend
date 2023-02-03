@@ -1,0 +1,2 @@
+{!!Form::hidden('mobile_module_listing_str', $mobile_module_listing_str, ['id'=>'mobile_module_listing_str' , 'value'=>'mobile_module_listing_str']) !!}
+{!!Form::hidden('language_listing_str', $language_listing_str, ['id'=>'language_listing_str' , 'value'=>'language_listing_str']) !!}

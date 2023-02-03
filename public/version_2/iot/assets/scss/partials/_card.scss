@@ -1,0 +1,142 @@
+﻿.card {
+    @extend .inlineblock;
+    background: $col-white;    
+    transition: .5s;    
+    border: 0;
+    margin-bottom: 30px;
+    border-radius: $border-radius-large;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgba($col-dark,0.1);    
+
+    .header {
+        @extend .m-b-0;
+        color: $grey-800;
+        padding:20px;
+        position: relative;       
+        box-shadow: none;
+        @include max-screen($break-xsmall){
+            padding: 10px;
+        }
+
+        .header-dropdown {
+            @extend .margin-0;
+            @extend .padding-0;
+            position: absolute;
+            top: 14px;
+            right:15px;
+            list-style: none;
+
+            @include max-screen($break-xsmall){
+                top: 6px;
+            }
+
+            .tab_btn{
+                @extend .align-center;
+                @extend .padding-0;
+                background: $grey-300;
+                color: $grey-600;
+                border-radius: 32px;
+                width: 32px;
+                height: 32px;
+                line-height: 32px;
+                font-size: 12px;
+                font-weight: $font-weight-700;
+
+                &.active,
+                &:hover{
+                    background: $color-primary;
+                    color: $col-white;
+                }
+            }
+            .dropdown-toggle{
+                &:after{
+                    content: "\f142";
+                    font-family: 'FontAwesome';
+                    border: 0;
+                    vertical-align: middle;
+                    height: auto;
+                    width: auto;
+                }
+            }
+
+            li{
+                @extend .inlineblock;
+                a{
+                    @extend .displayblock;
+                    padding: 5px 10px;                    
+                }
+
+                .dropdown-menu {
+
+                    background: $col-dark;
+                    border-radius: $border-radius-large;
+                    overflow: hidden;
+                    transform:none !important; 
+                    left: auto !important;
+                    right: 0;
+                    padding: 10px;
+                    box-shadow: 0px 2px 20px 0px rgba($col-dark,0.5);
+                    border: 0;
+
+                    li {
+                        display: block !important;
+    
+                        a {
+                            padding:10px;
+                            color: $grey-500;                            
+                            white-space: nowrap;
+                            font-size: 14px;
+                            &:hover{
+                                color: $col-white;
+                            }
+                        }
+                    }
+                }
+    
+            }            
+            i {
+                @include transition(all .5s);
+                font-size: 20px;
+                color: $grey-500;                
+            }
+        }
+        h2 {
+            @extend .margin-0;
+            font-size: 16px;            
+            color: $grey-800;
+            position: relative;
+
+            @include max-screen($break-xsmall){
+                width: 85%;
+            }
+
+            small {
+                @extend .displayblock;
+                @extend .m-t-5;
+                font-size: 13px;
+                color: $grey-500;
+                line-height: 15px;
+
+                a {
+                    font-weight: $font-weight-700;
+                    color: $grey-600;
+                }
+            }
+        }
+    }
+
+    .p-15 {
+        padding: 15px !important;
+    }
+
+    .body {
+        color: $grey-800;
+        padding: 20px;
+        font-weight: $font-weight-400; 
+
+        @include max-screen($break-xsmall){
+            padding: 10px;
+        }
+    }
+}

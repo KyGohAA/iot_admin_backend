@@ -1,0 +1,76 @@
+.table {
+	.thead-primary{
+	    th{
+		  color: $col-white;
+		  background-color: $color-primary;
+		  border-color: $color-primary;
+	    }
+	}
+	.thead-success{
+	    th{
+		  color: $col-white;
+		  background-color: $color-success;
+		  border-color: $color-success;
+	    }
+	}
+	.thead-danger{
+	    th{
+		  color: $col-white;
+		  background-color: $color-danger;
+		  border-color: $color-danger;
+	    }
+	}
+	.thead-info{
+	    th{
+		  color: $col-white;
+		  background-color: $color-info;
+		  border-color: $color-info;
+	    }
+	}
+	.thead-purple{
+	    th{
+		  color: $col-white;
+		  background-color: $purple;
+		  border-color: $purple;
+	    }
+	}
+	.thead-warning{
+	    th{
+		  color: $col-white;
+		  background-color: $orange;
+		  border-color: $orange;
+	    }
+	}
+  
+    tbody {
+        tr,
+        th {
+            td {
+                vertical-align: middle;
+                white-space: nowrap;
+            }
+        }
+	}
+	&.table_custom{
+		border-collapse: separate;
+		border-spacing: 0 5px !important;
+		tr{
+			background: $col-white;
+			td{
+				border: 0;
+			}
+		}
+	}
+	&.table_avatar{
+		&.w40{
+			img{
+				width: 40px;
+			}
+		}
+		&.w35{
+			img{
+				width: 35px;
+			}
+		}
+	}
+}
